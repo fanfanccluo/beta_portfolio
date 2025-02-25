@@ -1,0 +1,535 @@
+
+html {
+  color-scheme: light dark;
+}
+
+:root {
+  --color-accent: #ff6347; /* Accent color */
+  --border-color: oklch(50% 10% 200 / 40%);
+  --background-color: hsla(9, 96%, 63%, 0.5); /* Light mode background */
+  --text-color: #333;
+  --secondary-text-color: grey;
+  --hover-background: color-mix(in oklch, var(--color-accent), canvas 85%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --border-color: oklch(30% 10% 200 / 40%);
+    --background-color: #ae493a; /* Dark mode background */
+    --text-color: #eaeaea;
+    --secondary-text-color: #bbbbbb;
+  }
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "Gill Sans", sans-serif;
+  line-height: 1.6;
+  max-width: 150ch;
+  margin-inline: auto;
+  padding: 1rem;
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1em;
+  padding: 0.5em 0;
+}
+
+nav a {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.5em;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  border-bottom: 0.4em solid var(--color-accent);
+  background-color: var(--hover-background);
+  padding-bottom: 0.1em;
+}
+
+nav a.current {
+  border-bottom: 0.4em solid var(--color-accent);
+  background-color: var(--hover-background);
+  font-weight: bold;
+  padding-bottom: 0.1em;
+}
+
+/* Theme Switcher */
+.color-scheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.8rem;
+  font-family: inherit;
+  color: var(--text-color);
+  
+}
+
+img {
+  max-width: 50%;
+  height: auto;
+  display: block;
+  margin: 0px auto;
+}
+
+img {
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}
+
+.pronunciation {
+  color: grey;
+  font-size: 1em;
+  margin: 0px;
+}
+
+h2 {
+  font-size: 200%;
+}
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.1;
+  text-wrap: balance;
+  margin: 0px;
+}
+h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  unicode-bidi: isolate;
+  text-align: left;
+
+}
+
+form {
+  display: grid; 
+  grid-template-columns: 1fr 2fr; 
+  gap: 1em; 
+  max-width: 600px; 
+  margin: 0 auto; 
+}
+form label {
+  display: grid; 
+  grid-template-columns: subgrid; 
+  grid-column: 1 / -1; 
+  align-items: center; 
+  gap: 0.5em; 
+}
+form label span {
+  grid-column: 1; 
+}
+form input,
+form textarea {
+  grid-column: 2; 
+  width: 100%; 
+  padding: 0.5em; 
+  box-sizing: border-box; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+}
+form button {
+  grid-column: 1 / -1; 
+  padding: 0.75em;
+  background-color: var(--color-accent); 
+  color: white; 
+  font-weight: bold; 
+  border: none; 
+  border-radius: 4px; 
+  cursor: pointer; 
+}
+form button:hover {
+  background-color: darken(var(--color-accent), 10%);
+}
+
+/* project styling */
+/*
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr)); 
+  gap: 1em; 
+  padding: 1em; 
+}
+.projects article {
+  display: grid; 
+  grid-template-rows: subgrid;
+  grid-row: span 3; 
+  gap: 0.5em;
+  background-color: #f9f9f9; 
+  border: 1px solid #ddd;
+  border-radius: 8px; 
+  padding: 1em; 
+}
+.projects img {
+  max-width: 100%; 
+  height: auto; 
+  align-self: start; 
+  margin-bottom: 0.5em; 
+}
+.projects h2 {
+  margin: 0; 
+  font-size: 1.2em; 
+  text-align: center; 
+}
+.projects p {
+  margin: 0;
+  font-size: 1em; 
+  color: #555; 
+  text-align: justify; 
+}
+*/
+
+.projects {
+  display: flex; /* Align projects side by side */
+  flex-wrap: wrap; /* Wrap if screen is too small */
+  justify-content: center; /* Center align */
+  gap: 20px; /* Space between cards */
+  padding: 40px 0; /* Add space around projects */
+}
+
+/* Individual Project Card */
+.projects article {
+  background: white;
+  border-radius: 15px; /* Soft rounded corners */
+  padding: 20px;
+  width: 300px; /* Control width */
+  text-align: center; /* Center content */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+  transition: transform 0.3s ease-in-out;
+}
+
+.projects article:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Project Title */
+.projects article h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Project Year */
+.projects article p.year {
+  font-size: 1.1rem;
+  font-weight: normal; 
+  color: #555;
+  font-style: italic;
+  font-variant-numeric: oldstyle-nums;
+  margin-bottom: 12px;
+}
+
+/* Project Image Placeholder */
+.projects article img {
+  width: 100%; /* Make image responsive */
+  height: 180px; /* Fix height */
+  object-fit: cover; /* Ensure full coverage */
+  border-radius: 10px; /* Smooth edges */
+  background: #ddd; /* Default gray if no image */
+  display: block;
+  margin: 10px auto;
+}
+
+/* Project Description */
+.projects article p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+
+/*Contact Form Styling*/
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: rgb(255, 255, 255); 
+  padding: 2rem;
+  border: 1px solid #ddd; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+main section {
+  margin-bottom: 2rem; 
+}
+main section header h2 {
+  font-size: 1.8rem;
+  color: #9e0067; 
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+main p, main ul {
+  font-size: 1rem; 
+  color: #555; 
+  margin-bottom: 1rem; 
+}
+main ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+main ul li {
+  margin-bottom: 0.5rem; 
+}
+main article header h3 {
+  font-size: 1.5rem; 
+  color: #9e0067; 
+  margin-bottom: 0.5rem; 
+}
+footer {
+  text-align: center;
+  margin-top: 2rem; 
+  font-size: 0.9rem; 
+  color: #777; 
+}
+
+
+/* Style for the GitHub Stats Section */
+#profile-stats {
+  background-color: #f8d7da; /* Light pink background */
+  padding: 20px; /* Add spacing inside */
+  border-radius: 10px; /* Rounded corners */
+  text-align: center; /* Center text */
+  max-width: 600px; /* Limit width */
+  margin: 20px auto; /* Center on the page */
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Style the heading */
+h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  color: #333; /* Darker text */
+  padding: 10px;
+}
+
+/* Styling the GitHub Stats data */
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  gap: 15px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+#profile-stats dt {
+  font-weight: bold;
+  color: #555;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+#profile-stats dd {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  color: black;
+}
+
+#projects-pie-plot {
+  max-width: 20em;
+  margin-block: 2em;
+  overflow: visible;
+}
+
+/* Legend Styling */
+.container {
+  display: flex;             
+  flex-wrap: wrap;           
+  align-items: flex-start;   
+  gap: 2em;                 
+  margin: 2em 0;
+}
+
+svg {
+  flex: 1 1 300px;          
+  max-width: 100%;           
+  height: auto;
+}
+
+.legend {
+  flex: 2 1 400px;          
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr)); 
+  gap: 1em;
+  border: 1px solid #ddd;
+  padding: 1em;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.swatch {
+  width: 1em;
+  height: 1em;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color);
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid #333;
+}
+
+
+/* Pie Chart Hover Effect */
+svg:has(path:hover) path:not(:hover) {
+  opacity: 0.5; /* Fade out non-hovered wedges */
+  transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+path {
+    transition: 300ms;
+    cursor: pointer;
+  }
+
+
+.selected {
+    --color: oklch(60% 45% 0) !important;
+  
+    &:is(path) {
+      fill: var(--color);
+    }
+  }
+
+
+/* Styling for SearchBar */
+.searchBar {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75em 1em;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* gridlines style */
+.gridlines .tick line {
+  stroke: gray;    
+  stroke-width: 0.5px;  
+  stroke-dasharray: 4, 2; 
+}
+
+
+
+
+
+dl.info {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  margin: 0;
+  padding: 0.5em;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+dl.info dt {
+  font-weight: bold;
+  color: #666;
+}
+
+dl.info dd {
+  margin: 0;
+  padding: 0 0 0.5em 0.5em;
+  color: #333;
+}
+
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  max-width: 300px;
+  font-size: 0.9em;
+  display: none; 
+}
+
+circle {
+  transition: 100ms;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+circle:hover {
+  transform: scale(1.5);
+}
+
+
+.stats {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5em 1em; /* Spacing between rows and columns */
+  background-color: #fff;
+  padding: 1em;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 1em auto;
+}
+
+.stats dt {
+  font-weight: bold;
+  color: #555;
+}
+
+.stats dd {
+  margin: 0;
+  padding: 0;
+  color: #222;
+  font-weight: normal;
+}
+
+.stats abbr {
+  text-decoration: none;
+  border-bottom: 1px dotted #999;
+}
+
+.stats dt::after {
+  content: ':';
+  margin-left: 0.2em;
+  color: #888;
+}
+
+@keyframes marching-ants {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
+
+.selection {
+  fill-opacity: 0.1;
+  stroke: black;
+  stroke-opacity: 0.7;
+  stroke-dasharray: 5 3;
+  animation: marching-ants 2s linear infinite;
+}
+
+circle.selected {
+  fill: #ff6b6b;
+}
