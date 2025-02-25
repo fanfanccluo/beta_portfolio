@@ -6,7 +6,6 @@
     <title>Zifan Luo: Personal Site and Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="global.js" type="module"></script>
-    <script src="index.js" type="module"></script>
 </head>
 <body>
     <h1>Zifan Luo 🥥🪷</h1>
@@ -15,19 +14,18 @@
     -->
     
     <p>My name is Zifan. I'm currently a third-year CogSci specializing in Machine Learning and Data Science.  
-       I like papayas and volcanoes. Over the winter break, I went on a backpacking trip in Guatemala! Below is a picture  
-       of an active stratovolcano named 'Fuego'! 🌋
+       <br>My passion for technology is driven by a desire to leverage these cutting-edge tools to improve human life quality and contribute to social good. 
+       <br>Over the winter break, I went on a backpacking trip in Guatemala! Below is a picture of an active stratovolcano named 'Fuego'! 🌋 and some random shots of the ancient city Antigua Guatemala.
     </p>
-    <img src="/portfolio/images/Volcano.jpg" alt="A photo of the erupting Fuego Volcano" />
-
-    <h2>Latest Projects</h2>
-    <div class="projects">
-    <!-- Dynamically added content will appear here -->
+    <div class="carousel-container">
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <div class="carousel">
+            <img src="/portfolio/images/Volcano.jpg" alt="A photo of the erupting Fuego Volcano">
+            <img src="/portfolio/images/light.jpg" alt="A photo of lights">
+            <img src="/portfolio/images/church.jpg" alt="A photo of a church">
+        </div>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
     </div>
-
-    <h2>My GitHub Stats</h2>
-    <!-- Dynamically added  content will appear here -->
-    <div id="profile-stats"></div>
-
+    <script src="index.js" type="module"></script>
 </body>
 </html>

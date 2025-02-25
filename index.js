@@ -21,6 +21,16 @@ loadLatestProjects();
 
 
 
+let index = 0;
+
+function moveSlide(direction) {
+    const slides = document.querySelector('.carousel');
+    const totalImages = slides.children.length;
+    index = (index + direction + totalImages) % totalImages;
+    slides.style.transform = `translateX(${-index * 600}px)`;
+}
+
+
 
 
 
