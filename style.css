@@ -536,41 +536,18 @@ circle.selected {
 
 
 
-.carousel-container {
-  width: 100vw;  /* Full width of viewport */
-  height: 100vh; /* Full height of viewport */
-  position: relative;
-  overflow: hidden;
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 80vw; /* Adjust width as needed */
+  height: 80vh; /* Adjust height as needed */
+  gap: 10px; /* Space between images */
 }
 
-.carousel {
-  display: flex;
-  width: 300vw; /* Total width to fit all images */
-  transition: transform 0.5s ease-in-out;
+.grid-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures images fit without distortion */
+  border-radius: 5px; /* Optional: Adds rounded corners */
 }
-
-.carousel img {
-  width: 100vw;  /* Each image takes full width */
-  height: 100vh; /* Each image takes full height */
-  object-fit: cover; /* Ensures images fit properly */
-}
-
-.prev, .next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  padding: 20px;
-  cursor: pointer;
-  font-size: 30px;
-  border-radius: 5px;
-}
-
-.prev:hover, .next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.prev { left: 20px; }
-.next { right: 20px; }
